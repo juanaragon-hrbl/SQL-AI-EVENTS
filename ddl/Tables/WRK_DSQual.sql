@@ -1,0 +1,111 @@
+CREATE TABLE [dbo].[WRK_DSQual]
+(
+	 [CreatedDateUTC] [datetime]	NULL DEFAULT (getutcdate())
+	,[CreatedBy] [varchar](50)		NULL DEFAULT (replace(suser_sname(),'HERBALIFECORP\','')) 
+	,[ModifiedDateUTC] [datetime]	NULL DEFAULT (getutcdate())
+	,[ModifiedBy] [varchar](50)		NULL DEFAULT (replace(suser_sname(),'HERBALIFECORP\','')) 
+	,PK_Event						INT
+	,PK_Distributor					INT
+	,CreatedDate					DATETIME
+	,UpdatedDate					DATETIME
+	,Q01							BIT DEFAULT 0
+	,Q02							BIT DEFAULT 0
+	,Q03							BIT DEFAULT 0
+	,Q04							BIT DEFAULT 0
+	,Q05							BIT DEFAULT 0
+	,Q06							BIT DEFAULT 0
+	,Q07							BIT DEFAULT 0
+	,Q08							BIT DEFAULT 0
+	,Q09							BIT DEFAULT 0
+	,Q10							BIT DEFAULT 0
+	,Q11							BIT DEFAULT 0
+	,Q12							BIT DEFAULT 0	
+	,Q13							BIT DEFAULT 0	
+	,Q14							BIT DEFAULT 0	
+	,Q15							BIT DEFAULT 0
+	,Q16							BIT DEFAULT 0	
+	,Q17							BIT DEFAULT 0	
+	,Q18							BIT DEFAULT 0	
+	,Q19							BIT DEFAULT 0	
+	,Q20							BIT DEFAULT 0
+	,Q21							BIT DEFAULT 0	
+	,Q22							BIT DEFAULT 0	
+	,Q23							BIT DEFAULT 0	
+	,Q24							BIT DEFAULT 0	
+	,Q25							BIT DEFAULT 0
+	,Q26							BIT DEFAULT 0	
+	,Q27							BIT DEFAULT 0	
+	,Q28							BIT DEFAULT 0	
+	,Q29							BIT DEFAULT 0	
+	,Q30							BIT DEFAULT 0
+	,Q31							BIT DEFAULT 0	
+	,Q32							BIT DEFAULT 0	
+	,Q33							BIT DEFAULT 0	
+	,Q34							BIT DEFAULT 0	
+	,Q35							BIT DEFAULT 0
+	,Q36							BIT DEFAULT 0	
+	,Q37							BIT DEFAULT 0	
+	,Q38							BIT DEFAULT 0	
+	,Q39							BIT DEFAULT 0	
+	,Q40							BIT DEFAULT 0
+	,Q41							BIT DEFAULT 0	
+	,Q42							BIT DEFAULT 0	
+	,Q43							BIT DEFAULT 0	
+	,Q44							BIT DEFAULT 0	
+	,Q45							BIT DEFAULT 0
+	,Q46							BIT DEFAULT 0	
+	,Q47							BIT DEFAULT 0	
+	,Q48							BIT DEFAULT 0	
+	,Q49							BIT DEFAULT 0	
+	,Q50							BIT DEFAULT 0
+	,E01							BIT DEFAULT 0	
+	,E02							BIT DEFAULT 0	
+	,E03							BIT DEFAULT 0	
+	,E04							BIT DEFAULT 0	
+	,E05							BIT DEFAULT 0
+	,E06							BIT DEFAULT 0	
+	,E07							BIT DEFAULT 0	
+	,E08							BIT DEFAULT 0	
+	,E09							BIT DEFAULT 0	
+	,E10							BIT DEFAULT 0
+	,E11							BIT DEFAULT 0	
+	,E12							BIT DEFAULT 0	
+	,E13							BIT DEFAULT 0	
+	,E14							BIT DEFAULT 0	
+	,E15							BIT DEFAULT 0
+	,E16							BIT DEFAULT 0	
+	,E17							BIT DEFAULT 0	
+	,E18							BIT DEFAULT 0	
+	,E19							BIT DEFAULT 0	
+	,E20							BIT DEFAULT 0
+	,E21							BIT DEFAULT 0	
+	,E22							BIT DEFAULT 0	
+	,E23							BIT DEFAULT 0	
+	,E24							BIT DEFAULT 0	
+	,E25							BIT DEFAULT 0
+	,E26							BIT DEFAULT 0	
+	,E27							BIT DEFAULT 0	
+	,E28							BIT DEFAULT 0	
+	,E29							BIT DEFAULT 0	
+	,E30							BIT DEFAULT 0
+	,E31							BIT DEFAULT 0	
+	,E32							BIT DEFAULT 0	
+	,E33							BIT DEFAULT 0	
+	,E34							BIT DEFAULT 0	
+	,E35							BIT DEFAULT 0
+	,E36							BIT DEFAULT 0	
+	,E37							BIT DEFAULT 0	
+	,E38							BIT DEFAULT 0	
+	,E39							BIT DEFAULT 0	
+	,E40							BIT DEFAULT 0
+	,E41							BIT DEFAULT 0	
+	,E42							BIT DEFAULT 0	
+	,E43							BIT DEFAULT 0	
+	,E44							BIT DEFAULT 0	
+	,E45							BIT DEFAULT 0
+	,E46							BIT DEFAULT 0	
+	,E47							BIT DEFAULT 0	
+	,E48							BIT DEFAULT 0	
+	,E49							BIT DEFAULT 0	
+	,E50							BIT DEFAULT 0
+)

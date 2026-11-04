@@ -1,0 +1,15 @@
+﻿CREATE TYPE [dbo].[udt_SubEvents] AS TABLE (
+    [PK_Event]                INT             NULL,
+    [PK_Subevent]             INT             NULL,
+    [SubeventNumber]          INT             NULL,
+    [SubeventName]            NVARCHAR (1000) NULL,
+    [SubeventQualTxt]         NVARCHAR (4000) NULL,
+    [QualDesc]                NVARCHAR (MAX)  NULL,
+    [Icon]                    VARCHAR (MAX)   NULL,
+    [Color]                   VARCHAR (MAX)   NULL,
+    [Image]                   NVARCHAR (MAX)  NULL,
+    [IsTrackingVisible]       BIT             NULL,
+    [PK_SubEventGroup]        INT             NULL,
+    [SubEventGroupNameLocale] NVARCHAR (MAX)  NULL,
+    [IncludeInBizworkReport]  BIT             NULL,
+	[HideToPM]				  BIT DEFAULT 0);

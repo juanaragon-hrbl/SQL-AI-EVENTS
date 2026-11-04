@@ -1,0 +1,20 @@
+﻿CREATE VIEW [dbo].[v_EventQualifiers_VM]
+	AS 
+SELECT          EQR.PK_DISTRIBUTOR2 PK_DISTRIBUTOR2,
+                MAX(EQR.DistributorId2) DISTRIBUTORID2,
+				EQR.PK_EVENT,
+		        CONVERT(DATETIME,LEFT(CONVERT(VARCHAR(10),F.ROYALTYMONTH,112),6)+'01',112) as  VOLUMEMONTH,
+				SUM(F.PPV)  DSPPV,
+				SUM(ISNULL(F.SP_TV,0) + ISNULL(F.SP_MainTV,0))  DSTV,
+				SUM(F.DLV)  DSDLV,
+				SUM(ISNULL(F.RO,0) + ISNULL(F.MainRO,0))  DSRO,
+				SUM(F.PB)  DSPB,
+				SUM(F.SP_PV) DSPV,
+				SUM(F.SP_GV) DSGV
+FROM (SELECT PK_DISTRIBUTOR2, DistributorId2, PK_Event, COUNT(*)   Cnt 
+	  FROM dbo.v_EventQualifiers WITH(NOLOCK)
+	  GROUP BY PK_DISTRIBUTOR2, DistributorId2, PK_Event) EQR
+LEFT OUTER JOIN PubEvents.dbo.aggDSFinancial F WITH(NOLOCK) ON F.PK_Distributor = EQR.PK_Distributor2 	        		   
+GROUP BY PK_DISTRIBUTOR2,
+         PK_EVENT,
+         ROYALTYMONTH

@@ -1,0 +1,20 @@
+CREATE TABLE [dbo].[EventBadgePrinting_Archive](
+	[PK_EventBadgePrinting] [int] NOT NULL,
+	[PK_EventsRegistration] [int] NOT NULL,
+	[PK_Event] [int] NOT NULL,
+	[PK_Distributor] [int] NOT NULL,
+	[DistributorID] [varchar](20) NOT NULL,
+	[FirstName] [nvarchar](100) NULL,
+	[LastName] [nvarchar](100) NULL,
+	[COP] [varchar](30) NULL,
+	[TeamStatus] [varchar](50) NULL,
+	[Title] [varchar](30) NULL,
+	[Salutation] [varchar](30) NULL,
+	[BadgeStatus] [varchar](10) NULL,
+	[TerminalID] [varchar](20) NULL,
+	[PortNumber] [varchar](20) NULL,
+	[CreatedDateUTC] [smalldatetime] NOT NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[ModifiedDateUTC] [smalldatetime] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NOT NULL
+)

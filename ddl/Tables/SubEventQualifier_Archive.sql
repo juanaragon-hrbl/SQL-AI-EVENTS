@@ -1,0 +1,21 @@
+﻿CREATE TABLE [dbo].[SubEventQualifier_Archive](
+	[PK_SubEventQualifier] [bigint] NOT NULL,
+	[CreatedDateUTC] [datetime] NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[ModifiedDateUTC] [datetime] NULL,
+	[ModifiedBy] [varchar](50) NULL,
+	[PK_Event] [int] NOT NULL,
+	[PK_SubEvent] [int] NOT NULL,
+	[PK_Distributor] [int] NOT NULL,
+	[DistributorID] [varchar](30) NULL,
+	[QualDate] [smalldatetime] NULL,
+	[AddedUTC] [smalldatetime] NULL,
+	[RemovedUTC] [smalldatetime] NULL,
+	[IsManualOverride] [bit] NOT NULL,
+	[IsDeleted] [bit] NULL,
+	[IsDNR] [bit] NULL,
+	[IsType23] [bit] NULL,
+	[Qualified] [int] NOT NULL,
+	[Quantity] [int] NULL
+) ON [PRIMARY]
+GO

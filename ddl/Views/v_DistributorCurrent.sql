@@ -1,0 +1,44 @@
+﻿
+CREATE VIEW [dbo].[v_DistributorCurrent]
+AS
+SELECT
+	nDistributorID
+	,sDistributorID
+	,sFirstName
+	,sLastName
+	,sStreet
+	,sCity
+	,sDistributorStateOrProvince
+	,sDistributorPostalCode
+	,sDistributorCountryResidenceCode
+	,dDeleted
+	,sTeam
+	,sSubTeam 
+	,sType
+	,sEmail
+	,dApplication
+	,dSupervisorQualification
+	,dSupervisorReQualification
+	,dSBQualification
+	--,dSBRequalQualification
+	,dQPQualification
+	,dQSQualification
+	,dQSQualification_Actual
+	,dRenewal
+	,sDistributorCountryProcessingCode
+	,nDistributorCountryProcessingID
+	,nSponsorID
+	,sSponsorID
+    ,IsCantBuy
+    ,IsDoNotPay
+    ,IsHapActive
+    ,IsCashOnly
+    ,IsHardCashOnly
+    ,IsRetired
+    ,CanEmail
+    ,ContractAcceptanceDate
+	,dSPDemotion
+FROM
+	dbo.v_Distributor
+WHERE
+	StatusCode = 'COMPLETE'

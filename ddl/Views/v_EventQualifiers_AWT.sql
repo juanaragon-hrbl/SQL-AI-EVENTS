@@ -1,0 +1,15 @@
+﻿CREATE VIEW [dbo].[v_EventQualifiers_AWT]
+	AS 
+SELECT EQR.PK_DISTRIBUTOR2 PK_DISTRIBUTOR2,
+       MAX(EQR.DistributorId2) DISTRIBUTORID2,
+	   EQR.Pk_Event PK_EVENT,
+	   AWTYear as AWTYEAR,
+	   QUAL_AWT AWT_QUALDATE
+FROM (SELECT PK_DISTRIBUTOR2, DistributorId2, PK_Event, COUNT(*)   Cnt 
+	  FROM dbo.v_EventQualifiers
+	  GROUP BY PK_DISTRIBUTOR2, DistributorId2, PK_Event) EQR
+LEFT OUTER JOIN dbo.V_AWT AWT WITH(NOLOCK) ON AWT.PK_Distributor = EQR.PK_Distributor2
+GROUP BY EQR.PK_DISTRIBUTOR2,
+         EQR.Pk_Event,
+		 QUAL_AWT,
+		 AWTYear
