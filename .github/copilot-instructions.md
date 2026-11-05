@@ -46,6 +46,12 @@ If the prompt contains only a US number (e.g. `665485`, `US 665485`) or a work i
 - Retrieve title, description, acceptance criteria, and child tasks (and linked/related items if needed), then process them per the protocol below. The MCP is read-only: never attempt to update the work item.
 - If the work item cannot be retrieved, say so and ask the user to paste the text; do not guess its content.
 
+### Safety constraints for US work
+- Do not execute any scripts or stored procedures, and do not modify any database.
+- Do not update the user story or any work item in Azure DevOps (read-only).
+- If information is insufficient, state it rather than making assumptions.
+- `docs/scripts/` holds only proposed `.sql` scripts (`US-<US-ID>_<ObjectName>.sql`); the complete US documentation goes in `docs/user-stories/US-<US-ID>.md` (see `.github/instructions/us.instructions.md`, Step 5), separating facts from inferences and work performed from proposals.
+
 When a user story is provided as input, follow the full protocol in `.github/instructions/us.instructions.md` before producing any SQL.
 
 The critical rule: **implement only tasks explicitly marked as SQL in the user story**. Ignore all UI, translation, configuration, and non-SQL work, and clearly list what was excluded and why.

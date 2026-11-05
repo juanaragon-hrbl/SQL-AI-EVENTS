@@ -50,9 +50,25 @@ Implement only the SQL-classified items identified in Step 1. For each:
 - If the SQL task requires a schema change, update the relevant file(s) under `/ddl` as part of the same response.
 - Do not produce any UI code, translation strings, configuration changes, or non-SQL artifacts.
 
-## Step 5 — Summary
+## Step 5 — Document and Summarize
 
-End with a brief summary that lists:
+Write the analysis to `docs/user-stories/US-<US-ID>.md` (create the folder if missing; this document is the one allowed non-SQL artifact). Include these sections:
+
+1. **Requirements** and **Acceptance criteria** (as stated in the US, with SQL / NON-SQL classification)
+2. **Objects reviewed** (DDL files under `/ddl`)
+3. **Impact** (objects/consumers affected)
+4. **Work performed** (files actually created or modified)
+5. **Proposals** (suggested but NOT applied)
+6. **Pending tests** (what must be validated by the team, since nothing is executed here)
+7. **Open questions**
+
+Rules for the document:
+- Save every proposed script (not applied to `/ddl`) under `docs/scripts/` as `US-<US-ID>_<ObjectName>.sql` (create the folder if missing) and reference it from the **Proposals** section. Scripts are never executed. `docs/scripts/` holds only `.sql` scripts; all documentation (analysis, notes, tests, questions) goes in `docs/user-stories/US-<US-ID>.md`, which links to the script instead of duplicating its code.
+- Label each statement as **Fact** (verified in the US or in `/ddl`) or **Inference** (assumption/deduction).
+- Keep **Work performed** strictly separate from **Proposals**.
+- If information is insufficient, state it explicitly under Open questions instead of assuming.
+
+Then end the chat response with a brief summary that lists:
 
 1. SQL tasks completed and the objects created or modified.
 2. NON-SQL tasks explicitly left out and why (out of scope for SQL work).
