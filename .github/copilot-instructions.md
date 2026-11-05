@@ -38,6 +38,14 @@ Always reference these as the source of truth for table/column names.
 
 ## User Story Processing
 
+### Azure DevOps (TFS) source
+If the prompt contains only a US number (e.g. `665485`, `US 665485`) or a work item URL, fetch the work item via the `azure-devops-readonly` MCP server (configured in `.vscode\mcp.json`) instead of asking for the text:
+- Organization: `Herbalife-GTS`
+- Project: `Herbalife One` (URL-encoded `Herbalife%20One`)
+- Work item URL pattern: `https://dev.azure.com/Herbalife-GTS/Herbalife%20One/_workitems/edit/<ID>`
+- Retrieve title, description, acceptance criteria, and child tasks (and linked/related items if needed), then process them per the protocol below. The MCP is read-only: never attempt to update the work item.
+- If the work item cannot be retrieved, say so and ask the user to paste the text; do not guess its content.
+
 When a user story is provided as input, follow the full protocol in `.github/instructions/us.instructions.md` before producing any SQL.
 
 The critical rule: **implement only tasks explicitly marked as SQL in the user story**. Ignore all UI, translation, configuration, and non-SQL work, and clearly list what was excluded and why.

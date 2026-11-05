@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "azure-devops-readonly": {
+      "type": "http",
+      "url": "https://mcp.dev.azure.com/Herbalife-GTS",
+      "headers": {
+        "X-MCP-Readonly": "true"
+      }
+    }
+  }
+}
