@@ -14,12 +14,13 @@ All schema definitions are in the /ddl folder.
 Always reference these as the source of truth for table/column names.
 
 ### Repository layout
-- `ddl/tables/` — 170+ table definitions (one file per object, named exactly after the `[dbo].[ObjectName]`). Includes dimensional/fact tables (`dim*`, `fact*`, `agg*`), rule tables (`Rule*`), AI prediction input/output tables (`AI_*_IN`/`AI_*_OUT`), and legacy backup/temp copies (`*_BAK#`, `*_tmp`, `*_Backup`) — do not treat backup/temp tables as canonical; prefer the non-suffixed version.
-- `ddl/views/` — `v_*` and `v_RPT_*` reporting views, plus a few test-support objects (`TestClasses.sql`, `Tests.sql`, `Private_SysIndexes.sql`, `Private_SysTypes.sql`).
-- `ddl/functions/` — scalar/table-valued functions. Legacy objects use `fn_`/`udf_`/`ufn_` prefixes inconsistently (e.g. `udf_GenerateDates.sql` vs `fn_GenerateDates.sql`); new functions must use `ufn_` per the coding standard below.
-- `ddl/sprocs/` — currently empty; no existing stored procedure DDL has been captured here yet. New stored procedures created with Copilot's help should be added here as one `.sql` file per procedure, named `usp_<Name>.sql`.
+- `ddl\Tables\` — 259 table definitions (one file per object, named exactly after the `[dbo].[ObjectName]`). Covers the Events domain: `Event*`, `SubEvent*`, qualifiers/registrations, `AWT_*`, `PromotionAccelerator*`, `GDPR*`, plus data-exchange variants (`*_IN`, `*_OUT`, `*_Archive`, `*_Extract`), working tables (`WRK_*`, `Temp*`) and legacy copies (`*_BAK#`, `*_tmp`, `*_Backup`) — do not treat working/backup/temp tables as canonical; prefer the non-suffixed version.
+- `ddl\Views\` — `v_*` views (distributor, event, qualifier, AWT, `v_aggDSFinancial*`) and per-region `Events_Promotions_DRS_*` views.
+- `ddl\Functions\` — scalar/table-valued functions. Legacy objects use `udf_` and `ufn_` prefixes inconsistently; new functions must use `ufn_` per the coding standard below.
+- `ddl\Stored Procedures\` — 700+ existing `usp_*` procedures, one `.sql` file per procedure. Review similar ones for conventions; add new procedures here as `usp_<Name>.sql`.
+- `ddl\User Defined Types\` — user-defined types.
 - Each DDL file is a standalone `CREATE` script (SSMS-style `/****** Object: ... ******/` header, `SET ANSI_NULLS ON` / `SET QUOTED_IDENTIFIER ON`, `GO` batches) scripted from SQL Server — not a migration history. **Files are saved as UTF-16**; when reading/writing them with scripting tools, preserve that encoding.
-- `v_RPT_*` views and `agg*`/`fact*` tables are the primary data sources for reporting stored procedures; `dimDSLngDownline`/`dimDSLngUpline` and the `udf_Common_GetLineage*`/`udf_GetLineage*` functions implement the distributor downline/upline hierarchy used throughout qualification and reporting logic — check these before writing any new lineage- or team-level-related SQL.
+- Key data sources for reporting and qualification stored procedures: the `v_Distributor*`, `v_EventQualifiers*`, `v_EventTickets` and `v_aggDSFinancial*` views. The lineage views `v_dimDSLngDownline`, `v_DistributorLineage`, `v_SupervisorLineage` (the downline view reads `PubEvents.dbo.dimDSLngDownline_wBlock`, a cross-database table not in this repo) and the `ufn_GetDownline*` functions implement the distributor downline hierarchy used throughout qualification (`ufn_Qual*`) and reporting logic — check these before writing any new lineage- or team-level-related SQL.
 
 ## Coding Standards
 - Always use SET NOCOUNT ON
