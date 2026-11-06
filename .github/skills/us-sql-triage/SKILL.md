@@ -5,7 +5,7 @@ description: Process a user story (US) and implement only its SQL tasks. Use whe
 
 # User story → SQL only
 
-**Step 0 — Fetch the US.** If only a US number (or work item URL) is given, retrieve it with the `azure-devops-readonly` MCP server: org `Herbalife-GTS`, project `Herbalife One`, URL `https://dev.azure.com/Herbalife-GTS/Herbalife%20One/_workitems/edit/<ID>`. Read title, description, acceptance criteria and child tasks. Read-only; if it can't be fetched, ask the user for the text.
+**Step 0 — Fetch the US.** If only a US number (or work item URL) is given, retrieve it with the `azure-devops-onprem-mcp` MCP server: collection `MTS`, project `Events`, URL `https://tfs.dev.myhrbl.com/tfs/MTS/Events/_workitems/edit/<ID>`. Read title, description, acceptance criteria and child tasks. Read-only; if it can't be fetched, ask the user for the text.
 
 Follow `.github\instructions\us.instructions.md` strictly:
 

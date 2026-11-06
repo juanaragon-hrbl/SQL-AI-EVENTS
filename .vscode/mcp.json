@@ -1,10 +1,26 @@
 {
+  "inputs": [
+    {
+      "id": "tfs-onprem-pat",
+      "type": "promptString",
+      "description": "PAT autorizado para Azure DevOps Server",
+      "password": true
+    }
+  ],
   "servers": {
-    "azure-devops-readonly": {
-      "type": "http",
-      "url": "https://mcp.dev.azure.com/Herbalife-GTS",
-      "headers": {
-        "X-MCP-Readonly": "true"
+    "azure-devops-onprem-mcp": {
+      "type": "stdio",
+      "command": "C:\\Program Files\\nodejs\\npx.cmd",
+      "args": [
+        "-y",
+        "@ahouben/azure-devops-mcp@2.4-latest",
+        "https://tfs.dev.myhrbl.com/tfs/MTS",
+        "-a",
+        "env"
+      ],
+      "env": {
+        "AZURE_DEVOPS_PAT": "${env:AZURE_DEVOPS_PAT}",
+        "npm_config_cache": "C:\\Users\\juanara\\AppData\\Local\\npm-cache-mcp-test"
       }
     }
   }
